@@ -30,4 +30,9 @@ public class LoginPageStepdefs extends BaseTest {
     public void userSeeErrorMessage(String errorMessage) {
         loginPage.validateErrorMessage(errorMessage);
     }
+
+    @And("user skipping input username and password with {string} and {string}")
+    public void userSkippingInputUsernameAndPasswordWithAnd(String emptyUserName, String emptyPassword) {
+        loginPage.inputCredential(emptyUserName,emptyPassword);
+    }
 }
