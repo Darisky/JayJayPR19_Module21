@@ -2,12 +2,11 @@ package com.darisky.stepdefs;
 
 import com.darisky.BaseTest;
 import com.darisky.pages.Login_Page;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+
 
 public class LoginPageStepdefs extends BaseTest {
     Login_Page loginPage;
@@ -25,5 +24,10 @@ public class LoginPageStepdefs extends BaseTest {
     @When("user click login button")
     public void userClickLoginButton() {
         loginPage.clickingLoginButton();
+    }
+
+    @Then("user see error message {string}")
+    public void userSeeErrorMessage(String errorMessage) {
+        loginPage.validateErrorMessage(errorMessage);
     }
 }
