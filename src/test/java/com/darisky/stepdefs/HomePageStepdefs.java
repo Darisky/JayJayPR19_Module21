@@ -2,7 +2,6 @@ package com.darisky.stepdefs;
 
 import com.darisky.BaseTest;
 import com.darisky.pages.Home_Page;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 
