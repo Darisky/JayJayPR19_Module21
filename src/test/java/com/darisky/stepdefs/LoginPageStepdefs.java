@@ -9,10 +9,9 @@ import io.cucumber.java.en.When;
 
 
 public class LoginPageStepdefs extends BaseTest {
-    Login_Page loginPage;
+    Login_Page loginPage = new Login_Page(theDriver, wait);
     @Given("user at login page")
     public void userAtLoginPage() {
-        loginPage = new Login_Page(theDriver);
         loginPage.goToLoginPage();
     }
 
@@ -29,10 +28,5 @@ public class LoginPageStepdefs extends BaseTest {
     @Then("user see error message {string}")
     public void userSeeErrorMessage(String errorMessage) {
         loginPage.validateErrorMessage(errorMessage);
-    }
-
-    @And("user skipping input username and password with {string} and {string}")
-    public void userSkippingInputUsernameAndPasswordWithAnd(String emptyUserName, String emptyPassword) {
-        loginPage.inputCredential(emptyUserName,emptyPassword);
     }
 }

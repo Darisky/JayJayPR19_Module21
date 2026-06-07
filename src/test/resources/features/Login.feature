@@ -5,19 +5,17 @@ Feature: Login
     Given user at login page
     And user input username and password with "standard_user" and "secret_sauce"
     When user click login button
-    Then user redirect to home page
-    And user see product list
+    And user redirect to home page
+    Then user see product list
 
-  @invalid-credential
-  Scenario: Login With inValid Credential
+  @Negative_Test
+  Scenario Outline: Login with multiple errors username
     Given user at login page
-    And user input username and password with "unknown_user" and "standard_user"
+    And user input username and password with "<Username>" and "<Password>"
     When user click login button
-    Then user see error message "Epic sadface: Username and password do not match any user in this service"
-
-  @skip-input-credential
-  Scenario: Login Without Credential
-    Given user at login page
-    And user skipping input username and password with "" and ""
-    When user click login button
-    Then user see error message "Epic sadface: Username is required"
+    Then user see error message "<Expected_Message>"
+Examples:
+    | Username        | Password      | Expected_Message                                                          |
+    | unknown_use     | standard_user | Epic sadface: Username and password do not match any user in this service |
+    |                 |               | Epic sadface: Username is required                                        |
+    | locked_out_user | secret_sauce  | Epic sadface: Sorry, this user has been locked out.                       |
